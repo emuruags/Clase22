@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Productos</title>
+</head>
+<body>
+    <h2>Ingrese Productos</h2>
+    
+    <form action="/api/productos" method="POST">
+        Titulo: <input type="text" name="title">
+        Precio: <input type="text" name="price">
+        Imagen: <input type="text" name="thumbnails">
+        <button>Guardar</button>
+    </form>
+    <div class="container mt-3">
+        <Row>
+            <Col class="ml-5">
+            </Col>    
+            <Col>
+                <div>
+                    <h1>Chat</h1>
+                    <br>
+                    <div>
+                        <label>Nombre de Usuario</label>
+                        </div>
+                        <div>
+                            <form id="formPublicarMsj" submit="">
+                                <div class="form-group">
+                                    <input type="text" id="username" placeholder="Tu Nombre" class="form-control my-2 mr-2">
+                                    <input type="text" id="texto" placeholder="Cuéntanos algo..."class="form-control my-2 mr-2">
+                                    <input type="submit" value="Enviar" class="btn btn-primary my-2">
+                                </div>
+                
+                            </form>
+                        </div>
+                    <br>
+                    <label>Mensajes</label>
+                    <hr>
+                    <div id="messages"></div>
+
+                    <!-- <form id="formPublicarMensaje" class="form-inline" autocomplete="off">
+                        <div class="form-group">
+                            <input id="inputMensaje" type="text" class="form-control my-2 mr-2"
+                                placeholder="...">
+                            <button id="btnEnviar" type="submit" class="btn btn-primary my-2">Enviar!</button>
+                        </div>
+                    </form> -->
+
+                    
+                </div>
+            </Col>    
+
+        </Row>
+
+        <Row>
+            <!-- <form id="formPublicarMsj" submit="addMessage(this)"></form> -->
+            <!-- <form id="formPublicarMsj" submit="">
+                <div class="form-group">
+                    <input type="text" id="username" placeholder="Tu Nombre" class="form-control my-2 mr-2">
+                    <input type="text" id="texto" placeholder="Cuéntanos algo..."class="form-control my-2 mr-2">
+                    <input type="submit" value="Enviar" class="btn btn-primary my-2">
+                </div>
+
+            </form> -->
+            
+        </Row>
+
+        
+
+    </div>
+
+    <script type="module" src="js/index.js"></script>
+</body>
+</html>

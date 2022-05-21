@@ -1,0 +1,20 @@
+div
+        h1='Productos PUG'
+        br
+        if productosViewExist
+            div
+                table
+                    tr
+                        th='Name'
+                        th='Price'
+                        th='Thumbnails'
+                        each prod in productosView
+                            tr
+                                td=prod.title
+                                td=prod.price
+                                td
+                                    img(src=prod.thumbnail alt="not found")
+        else
+            h3='Producto no encontrado'
+        br
+        a(href="/" type="button")='Guardar Productos'

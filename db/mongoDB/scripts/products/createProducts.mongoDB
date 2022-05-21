@@ -1,0 +1,59 @@
+use('ecommerce')
+
+
+try {
+   db.products.insertMany( [
+    {
+        title: 'Barra 1',
+        price: 120,
+        thumbnails: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRgZScy2-RsufxgriMmoQRLitAAqOGTnz_Z11FNfGJiMpI_YOajrjwetXyqMv1P5K8pkILVamSAFg&usqp=CAc'
+    },
+    {
+        title: 'Barra 2',
+        price: 580,
+        thumbnails: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRgZScy2-RsufxgriMmoQRLitAAqOGTnz_Z11FNfGJiMpI_YOajrjwetXyqMv1P5K8pkILVamSAFg&usqp=CAc'
+    },
+    {
+        title: 'Barra 3',
+        price: 900,
+        thumbnails: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRgZScy2-RsufxgriMmoQRLitAAqOGTnz_Z11FNfGJiMpI_YOajrjwetXyqMv1P5K8pkILVamSAFg&usqp=CAc'
+    },
+    {
+        title: 'Barra 4',
+        price: 1280,
+        thumbnails: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRgZScy2-RsufxgriMmoQRLitAAqOGTnz_Z11FNfGJiMpI_YOajrjwetXyqMv1P5K8pkILVamSAFg&usqp=CAc'
+    },
+    {
+        title: 'Barra 5',
+        price: 1700,
+        thumbnails: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRgZScy2-RsufxgriMmoQRLitAAqOGTnz_Z11FNfGJiMpI_YOajrjwetXyqMv1P5K8pkILVamSAFg&usqp=CAc'
+    },
+    {
+        title: 'Disco 1',
+        price: 2300,
+        thumbnails: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRgZScy2-RsufxgriMmoQRLitAAqOGTnz_Z11FNfGJiMpI_YOajrjwetXyqMv1P5K8pkILVamSAFg&usqp=CAc'
+    },
+    {
+        title: 'Disco 2',
+        price: 2860,
+        thumbnails: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRgZScy2-RsufxgriMmoQRLitAAqOGTnz_Z11FNfGJiMpI_YOajrjwetXyqMv1P5K8pkILVamSAFg&usqp=CAc'
+    },
+    {
+        title: 'Disco 3',
+        price: 3350,
+        thumbnails: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRgZScy2-RsufxgriMmoQRLitAAqOGTnz_Z11FNfGJiMpI_YOajrjwetXyqMv1P5K8pkILVamSAFg&usqp=CAc'
+    },
+    {
+        title: 'Disco 4',
+        price: 4320,
+        thumbnails: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRgZScy2-RsufxgriMmoQRLitAAqOGTnz_Z11FNfGJiMpI_YOajrjwetXyqMv1P5K8pkILVamSAFg&usqp=CAc'
+    },
+    {
+        title: 'Disco 5',
+        price: 4990,
+        thumbnails: 'https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRgZScy2-RsufxgriMmoQRLitAAqOGTnz_Z11FNfGJiMpI_YOajrjwetXyqMv1P5K8pkILVamSAFg&usqp=CAc'
+    }
+   ] );
+} catch (e) {
+   print (e);
+}

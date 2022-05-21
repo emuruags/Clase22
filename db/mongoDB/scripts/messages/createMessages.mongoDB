@@ -1,0 +1,58 @@
+use('ecommerce')
+
+try {
+   db.message.insertMany( [
+    {
+        email: 'emurua@gmail.com',
+        datetime: Date(),
+        text: 'Mensaje de prueba'
+    },
+    {
+        email: 'emurua@gmail.com',
+        datetime: Date(),
+        text: 'Mensaje de prueba'
+    },
+    {
+        email: 'emurua@gmail.com',
+        datetime: Date(),
+        text: 'Mensaje de prueba'
+    },
+    {
+        email: 'emurua@gmail.com',
+        datetime: Date(),
+        text: 'Mensaje de prueba'
+    },
+    {
+        email: 'emurua@gmail.com',
+        datetime: Date(),
+        text: 'Mensaje de prueba'
+    },
+    {
+        email: 'emurua@gmail.com',
+        datetime: Date(),
+        text: 'Mensaje de prueba'
+    },
+    {
+        email: 'emurua@gmail.com',
+        datetime: Date(),
+        text: 'Mensaje de prueba'
+    },
+    {
+        email: 'emurua@gmail.com',
+        datetime: Date(),
+        text: 'Mensaje de prueba'
+    },
+    {
+        email: 'emurua@gmail.com',
+        datetime: Date(),
+        text: 'Mensaje de prueba'
+    },
+    {
+        email: 'emurua@gmail.com',
+        datetime: Date(),
+        text: 'Mensaje de prueba'
+    }
+   ] );
+} catch (e) {
+   print (e);
+}

@@ -1,0 +1,14 @@
+use('ecommerce')
+
+let varTitle = 'Rack'
+
+try {
+   db.products.find(
+       {
+          title: varTitle
+       } 
+ );
+} catch (e) {
+   print (e);
+}
+

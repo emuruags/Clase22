@@ -1,0 +1,25 @@
+<h1>Productos con Handlebars</h1>
+<br>
+
+{{#if productosViewExist}}
+<div>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Thumbnails</th>
+        </tr>
+        {{#each productosView}}
+        <tr>
+            <td>{{this.title}}</td>
+            <td>${{this.price}}</td>
+            <td><img  src={{this.thumbnail}} alt="not found"></td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
+{{else}}
+<h3>No existen productos</h3>
+{{/if}}
+<br>
+<a href="/" type="button">Guardar productos</a>
