@@ -1,86 +1,70 @@
+let socket = io();
 
-let socket = io.connect(); 
-socket.on('products', function(data) { 
-  console.log(data);
-  render(data);
-});
+// PRODUCTS
+fetch("/api/productos-test")
+    .then(response => response.json())
+    .then(data => {
+        renderTable(data);
+    })
+    .catch(error => console.log(error));
 
-socket.on('messages', function(data) { 
-  console.log(data);
-  renderMessages(data);
-});
-
-function render(data) { 
-    let html = `<tr>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Thumbnails</th>
-      </tr>`
-    
-      html += data.map(function(elem, index){ 
-      return(`
-      <tr>
-          <td>${elem.title}</td>
-          <td>$ ${elem.price}</td>
-          <td><img  src=${elem.thumbnail} alt="not found"></td>
-      </tr>`) 
-    }).join(" "); 
-    document.getElementById('products').innerHTML = html; 
+function renderTable(data) {
+    const table = document.getElementById("table-products");
+    const html = data.map(element => {
+        return (`<tr>
+    <td>${element.name}</td>
+    <td>${element.price}</td>
+    <td><img src="${element.thumbnails}" style="height:100px"></td>
+    </tr>`);
+    }).join("");
+    table.innerHTML += html;
 }
 
-function addProduct() { 
-    let product = { 
-      title: document.getElementById('title').value, 
-      price: document.getElementById('price').value,
-      thumbnails: document.getElementById('thumbnails').value
-    }; 
-    socket.emit('new-product', product); 
+// MESSAGE CENTER
+const formMessage = document.getElementById("formMessage");
+const btnSend = document.getElementById("btnSend");
 
-    document.getElementById('title').value = '';
-    document.getElementById('price').value = '';
-    document.getElementById('thumbnail').value = '';
-    document.getElementById('title').focus();
-
-    return;
-}
-
-
-function renderMessages(data) { 
-    // let html = data.map(function(elem, index){
-    //   return(`<div>
-    //         <span class="text-primary"><strong>${elem.text}</strong></span>:
-    //         <span class="text-muted">${elem.author.id}</span>
-    //         <span class="text-success"><em>${elem.author.name}</em></span>
-    //         <span class="text-success"><em>${elem.author.lastname}</em></span>
-    //         <span class="text-success"><em>${elem.author.age}</em></span>
-    //         <span class="text-success"><em>${elem.author.alias}</em></span>
-    //         <span class="text-success"><em>${elem.author.avatar}</em></span>
-    //         </div>`)
-    // }).join(" ");
-    // document.getElementById('messages').innerHTML = html;
-}
-
-function addMessage() { 
-    let message = {
-      text: document.getElementById('message').value,
+btnSend.addEventListener('click', (e) => {
+    e.preventDefault()
+    const message = {
         author: {
-            email: document.getElementById('email').value,
-            name: 'test',
-            lastname: 'test',
-            age: 22,
-            alias: 'testing',
-            avatar: 'avatar'
-        }
-    }; 
-    console.log(message);
-    socket.emit('new-message', message); 
+            id: formMessage.children.id.value,
+            nombre: formMessage.children.nombre.value,
+            apellido: formMessage.children.apellido.value,
+            edad: formMessage.children.edad.value,
+            alias: formMessage.children.alias.value,
+            avatar: formMessage.children.avatar.value,
+        },
+        text: formMessage.children.text.value
+    }
+    socket.emit('new-message', message);
+})
 
-    document.getElementById('message').value = '';
+const authorsSchema = new normalizr.schema.Entity('authors');
+const msjSchema = new normalizr.schema.Entity('messages', { author: authorsSchema }, { idAttribute: 'id' });
+const fileSchema = [msjSchema]
 
-    return;
+const renderMessages = (msj) => {
+    msj.map(element => {
+        const html = ` <article>
+        <span class="id">${element._doc.author.id}</span><span class="time">[${element._doc.author.timestamp}]:</span><span clas="text">${element._doc.text}</span><img src="${element._doc.author.avatar}" alt="avatar" class="avatar">
+                        </article>`;
+        const messageSectionVar = document.getElementById("messageSection");
+        messageSectionVar.innerHTML += html;
+    })
 }
 
-function getDateStamp() {
-    let current_datetime = new Date()
-    return current_datetime.getDate() + "/" + (current_datetime.getMonth() + 1) + "/" +  current_datetime.getFullYear() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes() + ":" + current_datetime.getSeconds()
+socket.on('message', (msj) => {
+    const denormalizeMessage = normalizr.denormalize(msj.result, fileSchema, msj.entities);
+    renderMessages(denormalizeMessage);
+    renderCompresion(msj, denormalizeMessage);
+})
+
+
+const renderCompresion = (msj, denormalizeMessage) => {
+    const comp = document.getElementById("compresion");
+    const denormalizeMessageLwngth = (JSON.stringify(denormalizeMessage)).length;
+    const msjLength = (JSON.stringify(msj)).length;
+    const compresion = ((msjLength - denormalizeMessageLwngth) / msjLength * 100).toFixed(2);
+    comp.innerHTML = `(Compresion: ${compresion}%)`;
 }

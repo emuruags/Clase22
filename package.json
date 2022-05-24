@@ -1,27 +1,21 @@
 {
-  "name": "clase8-apirestfull",
+  "name": "clase22-mocks-normalizr",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
+  "main": "src/server.js",
   "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "description": "",
   "dependencies": {
-    "@faker-js/faker": "^6.3.1",
-    "ejs": "^3.1.6",
-    "express": "^4.17.3",
-    "express-handlebars": "^6.0.4",
+    "@faker-js/faker": "^7.0.1",
+    "express": "^4.18.1",
     "faker": "^6.6.6",
-    "knex": "^2.0.0",
-    "mongoose": "^6.3.2",
-    "mysql": "^2.18.1",
+    "mongoose": "^6.3.4",
     "normalizr": "^3.6.2",
-    "pug": "^3.0.2",
-    "socket.io": "^4.4.1",
-    "sqlite3": "^5.0.6"
+    "socket.io": "^4.5.1"
   }
 }

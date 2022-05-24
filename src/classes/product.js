@@ -1,7 +1,7 @@
 class Product {
-    constructor(id, title, price, thumbnails) {
+    constructor(id, name, price, thumbnails) {
         this.id = id ? parseInt(id) : undefined;
-        this.title = title;
+        this.name = name;
         this.price = parseFloat(price);
         this.thumbnails = thumbnails;
     }
